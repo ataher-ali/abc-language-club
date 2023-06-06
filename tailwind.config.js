@@ -5,7 +5,6 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    mytheme: {
     
 "primary": "#a0c5e5",
     
@@ -24,8 +23,7 @@ export default {
 "warning": "#bd8d14",
     
 "error": "#e9536f",
-    },
-  
+    
   },
   plugins: [require("daisyui")],
 }
