@@ -1,14 +1,33 @@
-import React from 'react';
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const NavLinks = () => {
-    return (
+  const { user } = useContext(AuthContext);
+
+  return (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/all_course">All Course</Link>
+      </li>
+
+      {user ? 
         <>
-    
-      <li><a>Item 1</a></li>
-      <li><a>Item 3</a></li>
-   
+          <li>
+            <Link to="/selected_course">Selected Course</Link>
+          </li>
+          <li>
+            <Link to="/enrolled_course">Enrolled Course</Link>
+          </li>
         </>
-    );
+       : 
+        <></>
+      }
+    </>
+  );
 };
 
 export default NavLinks;

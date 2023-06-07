@@ -1,8 +1,8 @@
-import React from 'react';
+ 
 
 const Barnars = () => {
     return (
-        <div className='mx-64'>
+        <div className='mx-64 my-4'>
             <div style={{height:'450px'}} className="carousel   w-full">
   <div id="item1" className="carousel-item w-full">
     <img src="https://wpvip.edutopia.org/wp-content/uploads/2022/10/iStock-157309156_master.jpg?w=2880&quality=85" className="w-full" />

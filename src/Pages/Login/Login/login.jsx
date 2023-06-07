@@ -1,4 +1,4 @@
-import React from 'react';
+ 
 import Social_login from '../Social login/Social_login';
 
 const Login = () => {

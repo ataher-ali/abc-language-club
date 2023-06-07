@@ -1,4 +1,5 @@
-import React from 'react';
+ 
+import Footer from './Layouts/Footer';
 import Nav from './Layouts/Header/Nav';
 import { Outlet } from 'react-router-dom';
 
@@ -7,6 +8,7 @@ const App = () => {
     <div>
       <Nav></Nav>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };

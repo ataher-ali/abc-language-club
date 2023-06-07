@@ -1,20 +1,24 @@
-import React from 'react';
+import { useContext } from 'react';
 import Social_login from '../Social login/Social_login';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Register = () => {
+  
+  const {password_register}=useContext(AuthContext)
 
     const handel_register =(e)=>{
         e.preventDefault();
         const f = e.target
-        const username = f.username.value;
+        // const name = f.username.value;
         const password = f.password.value;
         const email = f.email.value;
-        const url = f.url.value;
+        // const url = f.url.value;
+        
+ password_register(email,password)
 
-        const user ={username, password, email, url}
-        console.log(user);
 
     }
+
 
 
     return (
