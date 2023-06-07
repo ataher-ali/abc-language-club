@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import NavLinks from './NavLinks';
 import NavProfile from './NavProfile';
 import Logo from '../../Components/Logo';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Nav = () => {
+
     return (
         <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -24,6 +26,7 @@ const Nav = () => {
   </div>
   <div className="navbar-end">
     <NavProfile></NavProfile>
+    
   </div>
 </div>
     );
