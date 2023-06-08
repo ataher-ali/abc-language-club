@@ -12,6 +12,8 @@ import EnrolledClasses from "./Pages/EnrolledClasses/EnrolledClasses.jsx";
 import All_class from "./Pages/All Class/All_class.jsx";
 import Dashboard from "./Dashboard/Dashboard.jsx";
 import Add_Course from "./Dashboard/Components/Add Course/Add_Course.jsx";
+import Users from "./Dashboard/Components/Users/Users.jsx";
+import MainPage from "./Dashboard/Components/Main Page/MainPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -53,8 +55,16 @@ const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children:[
       {
+        path:"/dashboard",
+        element: <MainPage></MainPage>
+      },
+      {
         path:"/dashboard/add_course",
         element: <Add_Course></Add_Course>
+      },
+      {
+        path:"/dashboard/users",
+        element: <Users></Users>
       },
     ]
   },

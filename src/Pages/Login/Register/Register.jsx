@@ -9,12 +9,12 @@ const Register = () => {
     const handel_register =(e)=>{
         e.preventDefault();
         const f = e.target
-        // const name = f.username.value;
+        const name = f.username.value;
         const password = f.password.value;
         const email = f.email.value;
-        // const url = f.url.value;
+        const url = f.url.value;
         
- password_register(email,password)
+ password_register(email,password,name,url)
 
 
     }

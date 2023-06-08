@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
   const { user } = useContext(AuthContext);
-  return <div className="px-40 bg-slate-100">
+  return <div className="md:px-40 bg-slate-100">
     <div className="navbar">
     <div className="navbar-start">
     <div className="dropdown">

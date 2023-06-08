@@ -1,7 +1,11 @@
  
+import { useContext } from 'react';
 import Social_login from '../Social login/Social_login';
+import { AuthContext } from '../../../Provider/AuthProvider';
+
 
 const Login = () => {
+  const {password_login}=useContext(AuthContext)
 
     const handel_login =(e)=>{
         e.preventDefault();
@@ -11,7 +15,7 @@ const Login = () => {
 
         const user ={password, email,}
         console.log(user);
-
+        password_login(email,password)
     }
 
 
