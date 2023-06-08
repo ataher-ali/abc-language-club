@@ -14,7 +14,8 @@ const Register = () => {
         const email = f.email.value;
         const url = f.url.value;
         
- password_register(email,password,name,url)
+        password_register(email,password,name,url)
+        f.reset();
 
 
     }

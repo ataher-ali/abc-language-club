@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Add_Course = () => {
 
@@ -15,9 +16,23 @@ const Add_Course = () => {
         const price = f.price.value;
         const seats = f.seats.value;
         
-        const classData ={username, email, url,corse_name, price, seats}
-        console.log(classData);
-      
+        const coursesData ={username, email, url,corse_name, price, seats}
+        f.reset();
+        fetch("http://localhost:4040/courses", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(coursesData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            Swal.fire({
+              icon: "success",
+              title: "Course added successful",
+            });
+          });
     }
 
 
@@ -45,11 +60,11 @@ const Add_Course = () => {
           <label className="label">
             <span className="label-text">Available Seats</span>
           </label>
-          <input type="number" placeholder="Available seats" name='seats' className="input input-bordered" />
+          <input type="number" defaultValue={20} placeholder="Available seats" name='seats' className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Price</span>
+            <span className="label-text">Price (USD)</span>
           </label>
           <input type="number"  placeholder="Price" name='price' className="input input-bordered" />
         </div>

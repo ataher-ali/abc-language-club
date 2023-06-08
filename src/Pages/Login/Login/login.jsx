@@ -16,10 +16,12 @@ const Login = () => {
         const user ={password, email,}
         console.log(user);
         password_login(email,password)
+        f.reset();
     }
 
 
     return (
+
         <div className=''>
         <div className="card-body mx-10 md:mx-80">
         <form action="" className='' onSubmit={handel_login}>
