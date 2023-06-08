@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { FcLike, } from "react-icons/fc";
 
 const All_class = () => {
@@ -12,6 +13,10 @@ useEffect(() => {
 }, [url]);
     return (
         <div className="mx-4 md:mx-44 my-6">
+           <Helmet>
+                <meta charSet="utf-8" />
+                <title>ABC | All Course </title>
+          </Helmet>
             <h1 className="text-center text-3xl font-bold my-5">All Course</h1>
             <div className="grid md:grid-cols-3 gap-4 ">
                 {

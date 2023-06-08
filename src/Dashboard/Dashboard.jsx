@@ -1,11 +1,16 @@
 import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   return (
     <div className="drawer lg:drawer-open">
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>ABC L.C. | Dashboard </title>
+          </Helmet>
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}

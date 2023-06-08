@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Add_Course = () => {
 
@@ -38,6 +39,10 @@ const Add_Course = () => {
 
     return (
         <div className='my-6 w-full px-20 '>
+          <Helmet>
+                <meta charSet="utf-8" />
+                <title>ABC L.C. | Dashboard | Add Course </title>
+          </Helmet>
           <h2 className="text-center my-4 font-bold text-4xl">Add Course</h2>
         <div className="m-6  ">
         <form action="" className='' onSubmit={handel_Class_add}>

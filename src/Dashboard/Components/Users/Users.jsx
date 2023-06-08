@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 
 const Users = () => {
@@ -12,6 +13,10 @@ useEffect(() => {
 }, [url]);
     return (
         <div>
+          <Helmet>
+                <meta charSet="utf-8" />
+                <title>ABC L.C. | Dashboard All Users </title>
+          </Helmet>
             <div className="overflow-x-auto w-full">
   <table className="table table-zebra">
     {/* head */}

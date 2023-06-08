@@ -2,13 +2,9 @@ import { Navigate } from "react-router-dom";
 import { useContext } from 'react';
 import Social_login from '../Social login/Social_login';
 import { AuthContext } from '../../../Provider/AuthProvider';
-import { useForm } from 'react-hook-form';
 
 const Register = () => {
-  const {
-    register,
-    formState: { errors },
-  } = useForm();
+  
   const {user,password_register}=useContext(AuthContext)
 
     const handel_register =(e)=>{
@@ -55,10 +51,8 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" {...register("password", { required: true,pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/ })}  placeholder="password" name='password' className="input input-bordered" />
-
-{errors.password && <p>Your password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</p>}
-          <label className="label">
+          <input type="password"  placeholder="password" name='password' className="input input-bordered" />
+        <label className="label">
             <a href="/login" className="label-text-alt link link-hover"> Already Have an Account ? </a>
           </label>
         </div>

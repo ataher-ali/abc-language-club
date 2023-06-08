@@ -1,8 +1,13 @@
+import { Helmet } from "react-helmet";
 
 const EnrolledClasses = () => {
     return (
         <div>
-            EnrolledClasses
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>ABC | Enrolled Course </title>
+          </Helmet>
+            
         </div>
     );
 };
