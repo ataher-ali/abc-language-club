@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 
 const Users = () => {
@@ -11,6 +12,8 @@ useEffect(() => {
     .then(res => res.json())
     .then(data =>setAllUser(data) )
 }, [url]);
+
+
     return (
         <div>
           <Helmet>
@@ -36,15 +39,20 @@ useEffect(() => {
         <th></th>
         <th>{user.email}</th>
         <th>{user.userType}</th>
-        <th><button className="btn btn-sm btn-outline"> update </button></th>
-      
+        <th><Link to={`/dashboard/users/${user.email}`} className="btn btn-sm btn-outline"> update </Link></th>
+        <tr>
+        
+
+        </tr>
           </tr>
+        
         ))
       }
 
     </tbody>
   </table>
 </div>
+
         </div>
     );
 };

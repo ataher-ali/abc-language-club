@@ -27,7 +27,7 @@ const Dashboard = () => {
 
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           <li>
-            <Link to='/profile'>
+            
             <div className="flex flex-col justify-center">
               <div className="w-full">
               <img className="h-40 rounded-full mx-auto block " src={user?.photoURL} alt="" />
@@ -37,10 +37,14 @@ const Dashboard = () => {
               </div>
               </div>
             </div>
-            </Link>
+            
+          </li>
+          
+          <li>
+            <Link to="/dashboard">Home</Link>
           </li>
           <li>
-            <Link to="/">Home</Link>
+          <Link to='/profile'> Profile </Link>
           </li>
           <li>
             <Link to="/dashboard/add_course">Add Course</Link>

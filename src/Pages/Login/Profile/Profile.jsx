@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet";
 const Profile = () => {
     const {user} = useContext(AuthContext)
     return (
-        <div className="m-4 md:mx-40">F
+        <div className="m-4 md:mx-40">
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>ABC | Profile </title>
