@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const Users = () => {
@@ -13,6 +14,33 @@ useEffect(() => {
     .then(data =>setAllUser(data) )
 }, [url]);
 
+
+const [user,setUser]=useState();
+
+const admin =(user)=>{
+    setUser('Admin')
+    Swal.fire({
+      icon: "success",
+      title: `${user.email} \n Admin Setup successful`,
+    });
+    console.log(user);
+}
+const instructor =(user)=>{
+    setUser('Instructor')
+    Swal.fire({
+      icon: "success",
+      title: `${user.email} \n Instructor Setup successful`,
+    });
+    console.log(user);
+}
+const student =(user)=>{
+    setUser('Admin')
+    Swal.fire({
+      icon: "success",
+      title: `${user.email} \n Student Setup successful`,
+    });
+    console.log(user);
+}
 
     return (
         <div>
@@ -40,10 +68,13 @@ useEffect(() => {
         <th>{user.email}</th>
         <th>{user.userType}</th>
         <th><Link to={`/dashboard/users/${user.email}`} className="btn btn-sm btn-outline"> update </Link></th>
-        <tr>
-        
+        <th>
 
-        </tr>
+        <button   className="btn btn-sm capitalize btn-error m-2" onClick={()=>admin(user)}> Admin</button>
+        <button className="btn btn-sm capitalize btn-success m-2" onClick={()=>instructor(user)} > Instructor </button>
+        <button  className="btn btn-sm capitalize btn-warning m-2" onClick={()=>student(user)}> Student</button>
+                
+        </th>
           </tr>
         
         ))

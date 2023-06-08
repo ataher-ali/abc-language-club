@@ -16,7 +16,6 @@ import Users from "./Dashboard/Components/Users/Users.jsx";
 import MainPage from "./Dashboard/Components/Main Page/MainPage.jsx";
 import PrivateRoute from "./Routes/PrivateRoute.jsx";
 import Profile from "./Pages/Login/Profile/Profile.jsx";
-import UserUpdate from "./Dashboard/Components/UserUpdate/UserUpdate.jsx";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage.jsx";
 
 const router = createBrowserRouter([
@@ -47,11 +46,11 @@ const router = createBrowserRouter([
       },
       {
         path:"selected_course",
-        element: <SelectedClasses></SelectedClasses>
+        element: <PrivateRoute><SelectedClasses></SelectedClasses></PrivateRoute>
       },
       {
         path:"enrolled_course",
-        element: <EnrolledClasses></EnrolledClasses>
+        element:<PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute> 
       },
       
       
@@ -72,11 +71,6 @@ const router = createBrowserRouter([
       {
         path:"/dashboard/users",
         element: <Users></Users>
-      },
-      {
-        path:"/dashboard/users/:mail",
-        element: <PrivateRoute><UserUpdate></UserUpdate></PrivateRoute>,
-         loader:({params})=>fetch(`http://localhost:4040/users/${params.mail}`)
       },
       
     ]
