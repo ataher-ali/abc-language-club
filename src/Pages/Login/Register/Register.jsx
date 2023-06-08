@@ -1,10 +1,15 @@
+import { Navigate } from "react-router-dom";
 import { useContext } from 'react';
 import Social_login from '../Social login/Social_login';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import { useForm } from 'react-hook-form';
 
 const Register = () => {
-  
-  const {password_register}=useContext(AuthContext)
+  const {
+    register,
+    formState: { errors },
+  } = useForm();
+  const {user,password_register}=useContext(AuthContext)
 
     const handel_register =(e)=>{
         e.preventDefault();
@@ -23,7 +28,9 @@ const Register = () => {
 
 
     return (
-        <div className=''>
+        <>
+        {
+      user? <Navigate to="/" ></Navigate> :
         <div className="card-body mx-10 md:mx-80">
         <form action="" className='' onSubmit={handel_register}>
         <div className="form-control">
@@ -48,9 +55,11 @@ const Register = () => {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="password" name='password' className="input input-bordered" />
+          <input type="password" {...register("password", { required: true,pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/ })}  placeholder="password" name='password' className="input input-bordered" />
+
+{errors.password && <p>Your password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</p>}
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover"> Already Have an Account ? </a>
+            <a href="/login" className="label-text-alt link link-hover"> Already Have an Account ? </a>
           </label>
         </div>
         <div className="form-control mt-6">
@@ -61,7 +70,8 @@ const Register = () => {
 <Social_login></Social_login>
 
       </div>
-        </div>
+}
+        </>
     );
 };
 

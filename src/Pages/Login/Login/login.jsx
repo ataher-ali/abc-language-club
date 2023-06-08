@@ -1,11 +1,11 @@
- 
-import { useContext } from 'react';
+import { Navigate } from "react-router-dom";
+import { useContext ,} from 'react';
 import Social_login from '../Social login/Social_login';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 
 const Login = () => {
-  const {password_login}=useContext(AuthContext)
+  const {password_login,user}=useContext(AuthContext)
 
     const handel_login =(e)=>{
         e.preventDefault();
@@ -22,8 +22,11 @@ const Login = () => {
 
     return (
 
-        <div className=''>
-        <div className="card-body mx-10 md:mx-80">
+        <>
+        {
+      user? <Navigate to="/" ></Navigate> :
+
+      <div className="card-body mx-10 md:mx-80">
         <form action="" className='' onSubmit={handel_login}>
        
         <div className="form-control">
@@ -37,9 +40,9 @@ const Login = () => {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="password" name='password' className="input input-bordered" />
+          <input type="password" placeholder="password" name='password' className="input input-bordered" />
           <label className="label">
-            <a href="#" className="label-text-alt link link-hover"> Forget Password </a>
+            <a href="/register" className="label-text-alt link link-hover"> Forget Password </a>
           </label>
         </div>
         <div className="form-control mt-6">
@@ -50,7 +53,10 @@ const Login = () => {
         <Social_login></Social_login>
 
       </div>
-        </div>
+      
+      }
+
+        </>
     );
 };
 

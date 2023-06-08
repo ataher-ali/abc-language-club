@@ -14,6 +14,8 @@ import Dashboard from "./Dashboard/Dashboard.jsx";
 import Add_Course from "./Dashboard/Components/Add Course/Add_Course.jsx";
 import Users from "./Dashboard/Components/Users/Users.jsx";
 import MainPage from "./Dashboard/Components/Main Page/MainPage.jsx";
+import PrivateRoute from "./Routes/PrivateRoute.jsx";
+import Profile from "./Pages/Login/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,10 +34,14 @@ const router = createBrowserRouter([
         path:"/login",
         element: <Login></Login>
       },
+      {
+        path:"/profile",
+        element:<PrivateRoute><Profile></Profile></PrivateRoute> 
+      },
 
       {
         path:"/all_course",
-        element: <All_class></All_class>
+        element: <PrivateRoute><All_class></All_class></PrivateRoute>
       },
       {
         path:"selected_course",
