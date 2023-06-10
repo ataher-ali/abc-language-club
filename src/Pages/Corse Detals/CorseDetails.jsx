@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { FaCartArrowDown } from "react-icons/fa/index.esm";
-import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
 const CorseDetails = () => {
 
@@ -55,8 +55,6 @@ const CorseDetails = () => {
 
       });
 
-
-    
   }
   return (
     <div className="w-full flex justify-center">
@@ -65,12 +63,12 @@ const CorseDetails = () => {
         <title>ABC | Course Details </title>
       </Helmet>
 
-      <div key={course._id} className="card w-96  bg-base-100 mt-10  ">
+      <div key={course._id} className="w-96   bg-base-100 mt-10  ">
         <figure>
           <img className="rounded-xl " src={course.url} alt="course" />
         </figure>
         <div className="card-body ">
-          <h2 className="card-title">{course.course_name}</h2>
+          <p className="text-4xl">{course.course_name}</p>
           <p>
             Course Fee : <span className="font-bold">{course.price} $ </span>{" "}
           </p>
@@ -86,7 +84,12 @@ const CorseDetails = () => {
             </button>
           </div>
         </div>
+        <div>
+     
       </div>
+      </div>
+
+
     </div>
   );
 };
