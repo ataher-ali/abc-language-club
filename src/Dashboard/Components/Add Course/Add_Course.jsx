@@ -48,9 +48,9 @@ const Add_Course = () => {
         <form action="" className='' onSubmit={handel_Class_add}>
         <div className="form-control">
           <label className="label">
-            <span className="label-text"> Course Name</span>
+            <span className="label-text"> Course Title</span>
           </label>
-          <input type="text" placeholder="Corse " name='class_name' className="input input-bordered" />
+          <input type="text" placeholder="Corse title " name='class_name' className="input input-bordered" />
         </div>
         <div className="form-control">
           

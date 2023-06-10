@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const All_class = () => {
-    const [course,setCourse]=useState([])
-const url = `http://localhost:4040/courses`
 
-useEffect(() => {
-    fetch(url)
-    .then(res => res.json())
-    .then(data =>setCourse(data) )
-}, [url]);
+  const{course}= useContext(AuthContext)
+
     return (
         <div className="mx-4 md:mx-44 my-6 h-max">
            <Helmet>

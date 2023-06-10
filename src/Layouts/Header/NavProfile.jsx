@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
  
 
 const NavProfile = () => {
-  const {user,logOut}=useContext(AuthContext)
+  const {user,logOut,userStatus}=useContext(AuthContext)
+
 
     return (
         <div className="dropdown dropdown-end">
@@ -18,10 +19,10 @@ const NavProfile = () => {
         <li>
           <Link to='/profile' className="justify-between">
             Profile
-            <span className="badge">New</span>
+            <p className="badge bg-warning py-3 text-slate-800 items-center ">{userStatus}</p>
           </Link>
         </li>
-        <li><Link to='/dashboard'>Dashboard</Link></li>
+        <li><Link to={`/dashboard/${userStatus}`}>Dashboard</Link></li>
         <li><button onClick={()=>logOut()}>Logout</button></li>
       </ul>
     </div>

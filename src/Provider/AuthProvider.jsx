@@ -59,6 +59,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+
   const logOut = () => {
     setLoading(true);
     signOut(auth)
@@ -132,7 +133,38 @@ const AuthProvider = ({ children }) => {
   }, []);
 
 
-  
+  // user types
+  const [userStatus,setUserStatus] = useState()
+
+  const email= user?.email
+  const user_url = `http://localhost:4040/users/${email}`
+
+useEffect(() => {
+    fetch(user_url)
+    .then(res => res.json())
+    .then(data =>setUserStatus(data.userType) )
+}, [user_url]);
+
+//all users
+const [allUser,setAllUser]=useState([])
+const all_user_url = `http://localhost:4040/users`
+
+useEffect(() => {
+    fetch(all_user_url)
+    .then(res => res.json())
+    .then(data =>setAllUser(data) )
+}, [all_user_url]);
+
+//all courses
+const [course,setCourse]=useState([])
+const all_class_url = `http://localhost:4040/courses`
+
+useEffect(() => {
+    fetch(all_class_url)
+    .then(res => res.json())
+    .then(data =>setCourse(data) )
+}, [all_class_url]);
+
 
   const authInfo = {
     user,
@@ -141,6 +173,9 @@ const AuthProvider = ({ children }) => {
     password_register,
     password_login,
     logOut,
+    userStatus,
+    allUser,
+    course
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

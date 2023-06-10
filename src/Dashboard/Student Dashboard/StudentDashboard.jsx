@@ -2,7 +2,9 @@
 const StudentDashboard = () => {
     return (
         <div>
-            Student Dashboard
+
+            <button className="btn btn-accent m-2 capitalize"> Request Instructor</button>
+            <button className="btn btn-neutral m-2 capitalize"> Request Admin</button>
         </div>
     );
 };

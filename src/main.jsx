@@ -20,6 +20,8 @@ import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage.jsx";
 import CorseDetails from "./Pages/Corse Detals/CorseDetails.jsx";
 import StudentDashboard from "./Dashboard/Student Dashboard/StudentDashboard.jsx";
 import InstructorDashboard from "./Dashboard/Instructor Dashboard/InstructorDashboard.jsx";
+import AdminRoute from "./Routes/AdminRoute.jsx";
+import InstructorRoute from "./Routes/InstructorRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -70,22 +72,22 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/dashboard/admin",
-        element: <PrivateRoute><MainPage></MainPage></PrivateRoute>
-      },
-      {
-        path:"/dashboard/instructor",
-        element: <PrivateRoute> <InstructorDashboard></InstructorDashboard> </PrivateRoute>
-      },
-      {
-        path:"/dashboard/add_course",
-        element: <PrivateRoute><Add_Course></Add_Course></PrivateRoute>
+        element: <PrivateRoute><AdminRoute><MainPage></MainPage></AdminRoute></PrivateRoute>
       },
       {
         path:"/dashboard/users",
-        element: <PrivateRoute><Users></Users></PrivateRoute> 
+        element: <PrivateRoute> <AdminRoute><Users></Users></AdminRoute> </PrivateRoute> 
       },
       {
-        path:"/dashboard",
+        path:"/dashboard/instructor",
+        element: <PrivateRoute> <InstructorDashboard><InstructorDashboard></InstructorDashboard></InstructorDashboard> </PrivateRoute>
+      },
+      {
+        path:"/dashboard/add_course",
+        element: <PrivateRoute> <InstructorRoute><Add_Course></Add_Course></InstructorRoute> </PrivateRoute>
+      },
+      {
+        path:"/dashboard/student",
         element: <PrivateRoute><StudentDashboard></StudentDashboard></PrivateRoute>
       },
       

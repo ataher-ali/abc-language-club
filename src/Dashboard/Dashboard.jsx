@@ -1,27 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext,} from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
-import { useEffect } from "react";
+import { AiFillFolderAdd, AiFillHome, } from 'react-icons/ai';
+import { FaChalkboardTeacher, FaUserGraduate } from 'react-icons/fa';
+import { FaUserCircle } from "react-icons/fa/index.esm";
+import { RiAdminFill } from "react-icons/ri";
 
 const Dashboard = () => {
-  const { user } = useContext(AuthContext);
-  const [admin,setAdmin]=useState(null)
-  const [instructor,setInstructor]=useState(null)
-
-  const [userStatus,setUserStatus] = useState()
-
-  const email= user?.email
-  const url = `http://localhost:4040/users/${email}`
-
-useEffect(() => {
-    fetch(url)
-    .then(res => res.json())
-    .then(data =>setUserStatus(data.userType) )
-}, [url]);
+  const { user,userStatus } = useContext(AuthContext);
 
 
-  
+
   return (
     <div className="drawer lg:drawer-open">
       <Helmet>
@@ -43,7 +33,7 @@ useEffect(() => {
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content text-center">
-          <li>
+          
             <div className="flex flex-col justify-center">
               <div className="w-full">
                 <img
@@ -53,39 +43,43 @@ useEffect(() => {
                 />
                 <div className="my-4">
                   <h1 className="text-center">{user?.displayName}</h1>
-                  <h1 className="text-center">{email}</h1>
-                  <div className="bg-green-300 gap-2 items-center flex justify-center text-center my-2 rounded-full p-2 font-bold">
-                    <p>Status : </p>
+                  <h1 className="text-center">{user?.email}</h1>
+                  <div className="bg-blue-200 gap-2 items-center flex justify-center text-center my-2 rounded-full p-2 font-bold">
+                    <p> Status : </p>
                     <p className="bg-slate-100 rounded-full px-4 p-1">{userStatus} </p>
                   </div>
                 </div>
               </div>
             </div>
-          </li>
+          
 
           <li>
-            <Link to="/"> Home </Link>
+            <Link to="/"> <span className="text-2xl text-blue-500"> <AiFillHome></AiFillHome> </span> Home </Link>
           </li>
-          <li>
-            <Link to="/dashboard"> Student Dashboard</Link>
+          {
+            (userStatus=='student')?<>
+            <li>
+            <Link to="/dashboard/student"> <span className="text-2xl text-blue-500"> <FaUserGraduate></FaUserGraduate> </span> Dashboard</Link>
           </li>
+            </>:<></>
+          }
 
           {
-            admin?<>
+           (userStatus=='admin')?<>
             <li>
-            <Link to="/dashboard/admin"> Admin dashboard</Link>
+            <Link to="/dashboard/admin"> <span className="text-2xl text-blue-500"><RiAdminFill></RiAdminFill></span> Dashboard</Link>
           </li>
           <li>
-            <Link to="/dashboard/users">Users</Link>
+            <Link to="/dashboard/users"> <span className="text-2xl text-blue-500"><FaUserCircle></FaUserCircle> </span> Users</Link>
           </li></>:<></>
           }
           {
-            instructor?<>
+          (userStatus == 'instructor')?<>
             <li>
-            <Link to="/dashboard/instructor">Instructor Dashboard</Link>
+            <Link to="/dashboard/instructor"> <span className="text-2xl text-blue-500"> <FaChalkboardTeacher></FaChalkboardTeacher> </span>  Dashboard</Link>
           </li>
           <li>
-            <Link to="/dashboard/add_course">Add Course</Link>
+            <Link to="/dashboard/add_course"> <span className="text-2xl text-blue-500"> <AiFillFolderAdd></AiFillFolderAdd> </span> Add Course</Link>
           </li>
             </>:<></>
           }

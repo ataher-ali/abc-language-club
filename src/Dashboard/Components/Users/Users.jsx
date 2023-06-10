@@ -1,18 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 
 const Users = () => {
-const [allUser,setAllUser]=useState([])
-const url = `http://localhost:4040/users`
+  const{allUser}=useContext(AuthContext)
 
-useEffect(() => {
-    fetch(url)
-    .then(res => res.json())
-    .then(data =>setAllUser(data) )
-}, [url]);
 
 
 const [user,setUser]=useState();
@@ -21,7 +16,7 @@ const admin =(user)=>{
     setUser('Admin')
     Swal.fire({
       icon: "success",
-      title: `${user.email} \n Admin Setup successful`,
+      title: `${user.email} \n  Admin Setup successful`,
     });
     console.log(user);
 }
