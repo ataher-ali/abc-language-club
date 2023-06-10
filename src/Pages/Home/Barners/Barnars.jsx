@@ -6,11 +6,6 @@ const Barnars = () => {
     return (
         <div className='mx-56 py-20 my-4'>
 
-
-
-
-
-  
     <Carousel>
                 <div className="h-96 ">
                 <img  src="https://wpvip.edutopia.org/wp-content/uploads/2022/10/iStock-157309156_master.jpg?w=2880&quality=85" />  

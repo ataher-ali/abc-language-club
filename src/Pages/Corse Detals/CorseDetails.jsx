@@ -18,12 +18,13 @@ const CorseDetails = () => {
     const my_email = user?.email
     const corse_name = data?.corse_name
     const price = data?.price
+    const course_uid =`${corse_id}${my_email}`
 
 
 
     
 
-    const selected_course_Data ={corse_id,my_email,corse_name ,price}
+    const selected_course_Data ={corse_id,my_email,corse_name ,price,course_uid}
 
     console.log(selected_course_Data);
 
