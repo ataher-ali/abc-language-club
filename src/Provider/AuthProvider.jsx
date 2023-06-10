@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
 
   const userinfo = (u) => {
     const email = u.email;
-    const userType = "user";
+    const userType = "student";
     const userData ={email, userType}
 
     fetch("http://localhost:4040/users", {
@@ -38,6 +38,7 @@ const AuthProvider = ({ children }) => {
         console.log(data);
       });
   };
+
 
   const googleLogin = () => {
     console.log("google");
@@ -127,8 +128,11 @@ const AuthProvider = ({ children }) => {
     });
     return () => {
       unsubscribe();
-    };
+  };
   }, []);
+
+
+  
 
   const authInfo = {
     user,

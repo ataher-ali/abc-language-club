@@ -17,6 +17,9 @@ import MainPage from "./Dashboard/Components/Main Page/MainPage.jsx";
 import PrivateRoute from "./Routes/PrivateRoute.jsx";
 import Profile from "./Pages/Login/Profile/Profile.jsx";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage.jsx";
+import CorseDetails from "./Pages/Corse Detals/CorseDetails.jsx";
+import StudentDashboard from "./Dashboard/Student Dashboard/StudentDashboard.jsx";
+import InstructorDashboard from "./Dashboard/Instructor Dashboard/InstructorDashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,11 +42,16 @@ const router = createBrowserRouter([
         path:"/profile",
         element:<PrivateRoute><Profile></Profile></PrivateRoute> 
       },
-
       {
         path:"/all_course",
-        element: <PrivateRoute><All_class></All_class></PrivateRoute>
+        element: <All_class></All_class>
       },
+      {
+        path:"/course_details/:id",
+        element: <PrivateRoute><CorseDetails></CorseDetails></PrivateRoute>,
+        loader:({params})=>fetch(`http://localhost:4040/courses/${params.id}`)
+      },
+
       {
         path:"selected_course",
         element: <PrivateRoute><SelectedClasses></SelectedClasses></PrivateRoute>
@@ -58,20 +66,29 @@ const router = createBrowserRouter([
   },
   {
     path:"/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
       {
-        path:"/dashboard",
-        element: <MainPage></MainPage>
+        path:"/dashboard/admin",
+        element: <PrivateRoute><MainPage></MainPage></PrivateRoute>
+      },
+      {
+        path:"/dashboard/instructor",
+        element: <PrivateRoute> <InstructorDashboard></InstructorDashboard> </PrivateRoute>
       },
       {
         path:"/dashboard/add_course",
-        element: <Add_Course></Add_Course>
+        element: <PrivateRoute><Add_Course></Add_Course></PrivateRoute>
       },
       {
         path:"/dashboard/users",
-        element: <Users></Users>
+        element: <PrivateRoute><Users></Users></PrivateRoute> 
       },
+      {
+        path:"/dashboard",
+        element: <PrivateRoute><StudentDashboard></StudentDashboard></PrivateRoute>
+      },
+      
       
     ]
   },

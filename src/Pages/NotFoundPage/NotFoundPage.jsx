@@ -10,7 +10,7 @@ const NotFoundPage = () => {
       <h1 className="not-found-heading m-2">Oops! Page Not Found</h1>
       <p className="not-found-text m-2">The page you are looking for does not exist.</p>
       
-      <Link className='btn btn-primary' to="/">Back to Home</Link>
+      <Link className='btn btn-accent capitalize btn-outline shadow-2xl'  to="/">Back to Home</Link>
     </div>
 
     </div>

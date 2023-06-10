@@ -7,7 +7,11 @@ import { Navigate } from "react-router-dom";
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     if(loading){
-    return <div className="radial-progress" style={{ "--value": "70", "--size": "12rem", "--thickness": "2rem" }}>70%</div>
+    return       <div className="flex justify-center  ">
+    <div className="my-72">
+      <progress className="progress w-56"></progress>
+    </div>
+  </div>
     }
     if (user) {
     return children;
