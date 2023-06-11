@@ -1,61 +1,21 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { FaCartArrowDown } from "react-icons/fa/index.esm";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const CorseDetails = () => {
 
-  const{user}=useContext(AuthContext)
+  const{AddToCart,user}=useContext(AuthContext)
 
   const course = useLoaderData()
   console.log(course)
 
-  const AddCart = (data)=>{
-
-    const corse_id = data?._id
-    const my_email = user?.email
-    const corse_name = data?.corse_name
-    const price = data?.price
-    const course_uid =`${corse_id}${my_email}`
-
-
-
-    
-
-    const selected_course_Data ={corse_id,my_email,corse_name ,price,course_uid}
-
-    console.log(selected_course_Data);
-
-    console.log('Add Cart');
-
-    fetch("http://localhost:4040/selected_course", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(selected_course_Data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if(data){
-          return  Swal.fire({
-            icon: "success",
-            title: "Add to Cart successful",
-          });
-         
-        }
-          return Swal.fire({
-            icon: "error",
-            title: "Already added ",
-          });
-        
-
-      });
-
+  const AddCart=(course)=>{
+    AddToCart(course)
   }
+
+
   return (
     <div className="w-full flex justify-center">
       <Helmet>
@@ -79,9 +39,16 @@ const CorseDetails = () => {
             Available Seat : <span className="font-bold"> {course.seats} </span>{" "}
           </p>
           <div className="card-actions justify-center my-4">
+            {
+              user?
             <button onClick={()=>AddCart(course)} className="btn btn-success btn-outline btn-sm capitalize ">
               <FaCartArrowDown></FaCartArrowDown> Selected to Cart
-            </button>
+            </button> :
+            <Link to={`/login`} className="btn btn-success btn-outline btn-sm capitalize ">
+              <FaCartArrowDown></FaCartArrowDown> Selected to Cart
+            </Link>
+            }
+
           </div>
         </div>
         <div>

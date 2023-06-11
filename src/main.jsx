@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/course_details/:id",
-        element: <PrivateRoute><CorseDetails></CorseDetails></PrivateRoute>,
+        element: <CorseDetails></CorseDetails>,
         loader:({params})=>fetch(`http://localhost:4040/courses/${params.id}`)
       },
 

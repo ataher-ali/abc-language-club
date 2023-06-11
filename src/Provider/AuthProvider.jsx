@@ -24,7 +24,8 @@ const AuthProvider = ({ children }) => {
   const userinfo = (u) => {
     const email = u.email;
     const userType = "student";
-    const userData ={email, userType}
+    const userRequest = null;
+    const userData ={email, userType,userRequest}
 
     fetch("http://localhost:4040/users", {
       method: "POST",
@@ -39,6 +40,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  
 
   const googleLogin = () => {
     console.log("google");
@@ -166,6 +168,48 @@ useEffect(() => {
 }, [all_class_url]);
 
 
+// add to cart
+const AddToCart = (data)=>{
+
+  const corse_id = data?._id
+  const my_email = user?.email
+  const corse_name = data?.corse_name
+  const price = data?.price
+  const course_uid =`${corse_id}${my_email}`
+  
+  const selected_course_Data ={corse_id,my_email,corse_name ,price,course_uid}
+  
+  console.log(selected_course_Data);
+  
+  console.log('Add Cart');
+  
+  fetch("http://localhost:4040/selected_course", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(selected_course_Data),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if(data){
+        return  Swal.fire({
+          icon: "success",
+          title: `${corse_name} \n Add to Cart successful`,
+        });
+       
+      }
+        return Swal.fire({
+          icon: "error",
+          title: "Already added ",
+        });
+      
+  
+    });
+
+   
+}
   const authInfo = {
     user,
     googleLogin,
@@ -175,7 +219,9 @@ useEffect(() => {
     logOut,
     userStatus,
     allUser,
-    course
+    course,
+    AddToCart,
+    
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

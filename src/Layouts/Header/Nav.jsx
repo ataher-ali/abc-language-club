@@ -31,8 +31,8 @@ const Nav = () => {
       user?
       <NavProfile></NavProfile> :
       <>
-      <Link className='btn btn-success capitalize ' to='/login'>Login</Link>
-      <Link className='btn btn-success btn-outline ml-4 capitalize ' to='/register'>Registration</Link>
+      <Link className='btn btn-sm  btn-success capitalize ' to='/login'>Login</Link>
+      <Link className='btn btn-sm  btn-neutral btn-outline ml-4 capitalize ' to='/register'>Registration</Link>
       </>
     }
     

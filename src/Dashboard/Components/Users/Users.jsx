@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { Helmet } from "react-helmet";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
@@ -10,33 +9,32 @@ const Users = () => {
 
 
 
-const [user,setUser]=useState();
+const users_request =(power,email)=>{
+  
+  const userRequest = {userType : power,userRequest:'approved'}
 
-const admin =(user)=>{
-    setUser('Admin')
-    Swal.fire({
-      icon: "success",
-      title: `${user.email} \n  Admin Setup successful`,
-    });
-    console.log(user);
-}
-const instructor =(user)=>{
-    setUser('Instructor')
-    Swal.fire({
-      icon: "success",
-      title: `${user.email} \n Instructor Setup successful`,
-    });
-    console.log(user);
-}
-const student =(user)=>{
-    setUser('Admin')
-    Swal.fire({
-      icon: "success",
-      title: `${user.email} \n Student Setup successful`,
-    });
-    console.log(user);
-}
-
+  const url = `http://localhost:4040/user/${email}`
+  fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userRequest),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        Swal.fire({
+          icon: "success",
+          title: `${power} Approval Successful`,
+        });
+        location.reload()
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    
+    }
     return (
         <div>
           <Helmet>
@@ -49,8 +47,9 @@ const student =(user)=>{
     <thead>
       <tr>
         <th></th>
-        <th>email</th>
-        <th>User type</th>
+        <th>Email</th>
+        <th>User Type</th>
+        <th>User Request</th>
         <th></th>
       </tr>
     </thead>
@@ -60,15 +59,14 @@ const student =(user)=>{
           <tr key={user.id}>
         
         <th></th>
-        <th>{user.email}</th>
-        <th>{user.userType}</th>
-        <th><Link to={`/dashboard/users/${user.email}`} className="btn btn-sm btn-outline"> update </Link></th>
+        <th>{user?.email}</th>
+        <th>{user?.userType}</th>
+        <th>{user?.userRequest}</th>
         <th>
 
-        <button   className="btn btn-sm capitalize btn-error m-2" onClick={()=>admin(user)}> Admin</button>
-        <button className="btn btn-sm capitalize btn-success m-2" onClick={()=>instructor(user)} > Instructor </button>
-        <button  className="btn btn-sm capitalize btn-warning m-2" onClick={()=>student(user)}> Student</button>
-                
+        <button disabled={user?.userRequest == 'approved' || user?.userRequest ==null } className="btn btn-sm capitalize btn-success m-2" onClick={()=>users_request(user?.userRequest,user.email)} > Approve </button>
+        
+           
         </th>
           </tr>
         

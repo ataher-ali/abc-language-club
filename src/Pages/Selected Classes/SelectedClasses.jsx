@@ -17,6 +17,9 @@ const SelectedClasses = () => {
     .then(data =>setCourse(data) )
 }, [url]);
 
+
+
+
 const delToCart =(id)=>{
   console.log(id);
   Swal.fire({
@@ -41,6 +44,7 @@ const delToCart =(id)=>{
                         'Your file has been deleted.',
                         'success'
                     )
+                   
                     location.reload()
                   } 
                   }

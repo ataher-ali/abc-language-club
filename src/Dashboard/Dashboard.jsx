@@ -10,8 +10,6 @@ import { RiAdminFill } from "react-icons/ri";
 const Dashboard = () => {
   const { user,userStatus } = useContext(AuthContext);
 
-
-
   return (
     <div className="drawer lg:drawer-open">
       <Helmet>
@@ -32,9 +30,10 @@ const Dashboard = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
 
-        <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content text-center">
+        <ul className="menu p-4 w-80  h-full bg-base-200 text-base-content text-center">
           
-            <div className="flex flex-col justify-center">
+           <li>
+           <div className="flex flex-col w-full justify-center">
               <div className="w-full">
                 <img
                   className="h-40 rounded-full mx-auto block "
@@ -51,6 +50,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+           </li>
           
 
           <li>
