@@ -18,7 +18,7 @@ const All_class = () => {
             <div className="card flex justify-center">
             <div className="lg:grid lg:grid-cols-3 gap-7">
                 {
-                    course.map(course => <div key={course._id} className="card  w-96 bg-base-100 shadow-xl">
+                    course.map(course => <div key={course._id} className="card h-96 w-96 bg-base-100 shadow-xl">
                     <figure>
                       <img
                         src={course.url}
