@@ -27,84 +27,127 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    children:[
+    children: [
       {
-        path:"/",
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:"/register",
-        element: <Register></Register>
+        path: "/register",
+        element: <Register></Register>,
       },
       {
-        path:"/login",
-        element: <Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:"/profile",
-        element:<PrivateRoute><Profile></Profile></PrivateRoute> 
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/all_course",
-        element: <All_class></All_class>
+        path: "/all_course",
+        element: <All_class></All_class>,
       },
       {
-        path:"/course_details/:id",
+        path: "/course_details/:id",
         element: <CorseDetails></CorseDetails>,
-        loader:({params})=>fetch(`http://localhost:4040/courses/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://abc-server-ataher-ali.vercel.app/courses/${params.id}`),
       },
 
       {
-        path:"selected_course",
-        element: <PrivateRoute><SelectedClasses></SelectedClasses></PrivateRoute>
+        path: "selected_course",
+        element: (
+          <PrivateRoute>
+            <SelectedClasses></SelectedClasses>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"enrolled_course",
-        element:<PrivateRoute><EnrolledClasses></EnrolledClasses></PrivateRoute> 
+        path: "enrolled_course",
+        element: (
+          <PrivateRoute>
+            <EnrolledClasses></EnrolledClasses>
+          </PrivateRoute>
+        ),
       },
-      
-      
-    ]
+    ],
   },
   {
-    path:"/dashboard",
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    children:[
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path:"/dashboard/admin",
-        element: <PrivateRoute><AdminRoute><MainPage></MainPage></AdminRoute></PrivateRoute>
+        path: "/dashboard/admin",
+        element: (
+          <PrivateRoute>
+            <AdminRoute>
+              <MainPage></MainPage>
+            </AdminRoute>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/users",
-        element: <PrivateRoute> <AdminRoute><Users></Users></AdminRoute> </PrivateRoute> 
+        path: "/dashboard/users",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AdminRoute>
+              <Users></Users>
+            </AdminRoute>{" "}
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/instructor",
-        element: <PrivateRoute> <InstructorDashboard><InstructorDashboard></InstructorDashboard></InstructorDashboard> </PrivateRoute>
+        path: "/dashboard/instructor",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <InstructorDashboard>
+              <InstructorDashboard></InstructorDashboard>
+            </InstructorDashboard>{" "}
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/add_course",
-        element: <PrivateRoute> <InstructorRoute><Add_Course></Add_Course></InstructorRoute> </PrivateRoute>
+        path: "/dashboard/add_course",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <InstructorRoute>
+              <Add_Course></Add_Course>
+            </InstructorRoute>{" "}
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/dashboard/student",
-        element: <PrivateRoute><StudentDashboard></StudentDashboard></PrivateRoute>
+        path: "/dashboard/student",
+        element: (
+          <PrivateRoute>
+            <StudentDashboard></StudentDashboard>
+          </PrivateRoute>
+        ),
       },
-      
-      
-    ]
+    ],
   },
   {
-    path:"/*",
-    element: <NotFoundPage></NotFoundPage>
-  }
-  
+    path: "/*",
+    element: <NotFoundPage></NotFoundPage>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>
 );

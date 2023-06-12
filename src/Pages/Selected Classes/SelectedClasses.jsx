@@ -10,7 +10,7 @@ const SelectedClasses = () => {
 
   const [corse,setCourse]=useState([])
 
-  const url = `http://localhost:4040/selected_course/${user?.email}`
+  const url = `https://abc-server-ataher-ali.vercel.app/selected_course/${user?.email}`
   useEffect(() => {
     fetch(url)
     .then(res => res.json())
@@ -32,7 +32,7 @@ const delToCart =(id)=>{
     confirmButtonText: 'Yes, delete it!'
 }).then((result) => {
     if (result.isConfirmed) {
-        fetch(`http://localhost:4040/selected_course/${id}`, {
+        fetch(`https://abc-server-ataher-ali.vercel.app/selected_course/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

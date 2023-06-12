@@ -17,8 +17,8 @@ const BestTecher = () => {
             </div>
             <div>
             <img className="h-60 p-4 mx-auto block rounded-full" src="https://lh3.googleusercontent.com/a/AAcHTtcUVvznmz2X_ndpG3Jgon0CPNcsVl7TN0ac0foe_Q=s96-c" alt="" />
-            <p className="text-center text-2xl">Name Hear</p>
-            <p className="text-center text-sm">Chinas Langues</p>
+            <p className="text-center text-2xl">Atahar</p>
+            <p className="text-center text-sm"> Bangla Langues</p>
             </div>
         </div>
         </div>

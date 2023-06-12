@@ -13,7 +13,7 @@ const users_request =(power,email)=>{
   
   const userRequest = {userType : power,userRequest:'approved'}
 
-  const url = `http://localhost:4040/user/${email}`
+  const url = `https://abc-server-ataher-ali.vercel.app/user/${email}`
   fetch(url, {
       method: 'PUT',
       headers: {

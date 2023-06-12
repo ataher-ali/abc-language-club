@@ -19,7 +19,7 @@ const Add_Course = () => {
         
         const coursesData ={username, email, url,corse_name, price, seats}
         f.reset();
-        fetch("http://localhost:4040/courses", {
+        fetch("https://abc-server-ataher-ali.vercel.app/courses", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
     const userRequest = null;
     const userData ={email, userType,userRequest}
 
-    fetch("http://localhost:4040/users", {
+    fetch("https://abc-server-ataher-ali.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -139,7 +139,7 @@ const AuthProvider = ({ children }) => {
   const [userStatus,setUserStatus] = useState()
 
   const email= user?.email
-  const user_url = `http://localhost:4040/users/${email}`
+  const user_url = `https://abc-server-ataher-ali.vercel.app/users/${email}`
 
 useEffect(() => {
     fetch(user_url)
@@ -149,7 +149,7 @@ useEffect(() => {
 
 //all users
 const [allUser,setAllUser]=useState([])
-const all_user_url = `http://localhost:4040/users`
+const all_user_url = `https://abc-server-ataher-ali.vercel.app/users`
 
 useEffect(() => {
     fetch(all_user_url)
@@ -159,7 +159,7 @@ useEffect(() => {
 
 //all courses
 const [course,setCourse]=useState([])
-const all_class_url = `http://localhost:4040/courses`
+const all_class_url = `https://abc-server-ataher-ali.vercel.app/courses`
 
 useEffect(() => {
     fetch(all_class_url)
@@ -183,7 +183,7 @@ const AddToCart = (data)=>{
   
   console.log('Add Cart');
   
-  fetch("http://localhost:4040/selected_course", {
+  fetch("https://abc-server-ataher-ali.vercel.app/selected_course", {
     method: "POST",
     headers: {
       "content-type": "application/json",

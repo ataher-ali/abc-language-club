@@ -16,7 +16,7 @@ const InstructorDashboard = () => {
         // console.log(allUser);
         const userRequest = {userRequest: request_data}
 
-        fetch(`http://localhost:4040/user/${user?.email}`, {
+        fetch(`https://abc-server-ataher-ali.vercel.app/user/${user?.email}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
