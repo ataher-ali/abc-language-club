@@ -14,7 +14,7 @@ const BestCourses = () => {
       <div className="mx-40 my-10 lg:grid lg:grid-cols-3 gap-7">
         {cours.map((course) => (
           <div key={course._id} className="">
-            <div className="card w-96 bg-base-100 shadow-xl image-full">
+            <div className="card w-96 bg-base-100 h-72 shadow-xl image-full">
               <figure>
                 <img src={course.url} alt="Shoes" />
               </figure>
